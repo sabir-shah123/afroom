@@ -1,0 +1,6 @@
+
+section{min-height:100vh}
+section h1{margin:0 0 30px;width:100%;font-size:40px;font-weight:400;color:#000}
+section a{display:inline-block;padding:15px 25px;font-weight:600;text-transform:uppercase;text-decoration:none;border:3px solid #000;border-radius:100px;color:#000;-webkit-transition:all ease .5s;-o-transition:all ease .5s;transition:all ease .5s}
+section a:focus,section a:hover{background:#000;color:#0AC2D2}@media(min-width:768px){
+	section h1{font-size:60px}}.flex-center{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.dots .dot{display:inline-block;width:35px;height:35px;margin:0 10px;border-radius:50%;background:#000;-webkit-animation:dot-dot-dot 1.4s linear infinite;animation:dot-dot-dot 1.4s linear infinite}.dots .dot:nth-child(2){animation-delay:.2s}.dots .dot:nth-child(3){animation-delay:.4s}@keyframes dot-dot-dot{0%,100%,60%{-webkit-transform:initial;-ms-transform:initial;transform:initial}30%{-webkit-transform:translateY(-25px);-ms-transform:translateY(-25px);transform:translateY(-25px)}}

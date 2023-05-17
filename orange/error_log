@@ -1,0 +1,7 @@
+[26-Mar-2023 20:58:54 UTC] PHP Notice:  Undefined property: stdClass::$transactionId in /home/thealiens/public_html/afroom/orange/helper.php on line 134
+[26-Mar-2023 20:59:07 UTC] PHP Notice:  Undefined property: stdClass::$transactionId in /home/thealiens/public_html/afroom/orange/helper.php on line 134
+[26-Mar-2023 21:02:13 UTC] PHP Notice:  Undefined property: stdClass::$transactionId in /home/thealiens/public_html/afroom/orange/helper.php on line 134
+[26-Mar-2023 21:07:22 UTC] PHP Notice:  Undefined property: stdClass::$transactionId in /home/thealiens/public_html/afroom/orange/helper.php on line 134
+[26-Mar-2023 21:07:41 UTC] PHP Notice:  Undefined property: stdClass::$transactionId in /home/thealiens/public_html/afroom/orange/helper.php on line 134
+[26-Mar-2023 21:11:50 UTC] PHP Notice:  Undefined property: stdClass::$transactionId in /home/thealiens/public_html/afroom/orange/helper.php on line 135
+[10-Apr-2023 18:24:36 UTC] PHP Warning:  count(): Parameter must be an array or an object that implements Countable in /home/thealiens/public_html/afroom/orange/orange.php on line 10
