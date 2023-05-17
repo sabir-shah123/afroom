@@ -15,7 +15,6 @@ if($_SESSION['logintype']=='Customer'){
 $booking = mysqli_query($conn,"Select c.*,b.personname,b.mobile from booking as c inner join customer as b on b.id=c.custid inner join custpayment as p on p.custid=c.id inner join providerpay as a on a.bookingid=c.id where p.paymentstatus=1 and c.custstatus=1 and a.paymentstatus=1  ".$session." ".$session1." order by c.id desc");
 }else{
 $booking = mysqli_query($conn,"Select c.*,b.personname,b.mobile from booking as c inner join customer as b on b.id=c.custid inner join custpayment as p on p.custid=c.id inner join providerpay as a on a.bookingid=c.id where p.paymentstatus=1 and c.custstatus=1 and a.paymentstatus=1 and c.booktype='".$_SESSION['regas']."' ".$session." ".$session1." order by c.id desc");
-
 }
 while($result = mysqli_fetch_assoc($booking)){
 		$checkpay = mysqli_query($conn,"SELECT pp.id,pp.bookingid,p.name,p.mobile from providerpay as pp left join providers as p on p.id=pp.providerid where pp.bookingid='".$result['id']."' and pp.paymentstatus=1");
