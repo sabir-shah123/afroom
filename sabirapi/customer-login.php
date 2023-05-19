@@ -3,7 +3,6 @@
 include '../api/db.php';
 header('Content-Type: application/json');
 
-
 //mobile is required and must be 10 digit
 if (!isset($_POST['mobile']) || strlen($_POST['mobile']) != 10) {
     $res = [
@@ -16,15 +15,17 @@ if (!isset($_POST['mobile']) || strlen($_POST['mobile']) != 10) {
     exit;
 }
 
-$check = mysqli_query($conn, "Select count(id) as id from customer where mobile='" . $_POST['mobile'] . "'");
+$check = mysqli_query($conn, "Select * from customer where mobile='" . $_POST['mobile'] . "'");
 $fetch = mysqli_fetch_assoc($check);
-if ($fetch['id'] == 0) {
+if (!$fetch) {
     $insert = mysqli_query($conn, "INSERT into customer (mobile) Values('" . $_POST['mobile'] . "')");
     $_SESSION['mobile'] = $_POST['mobile'];
     $_SESSION['logintype'] = 'Customer';
+    $_SESSION['unqid'] = mysqli_insert_id($conn);
 } else {
     $_SESSION['mobile'] = $_POST['mobile'];
     $_SESSION['logintype'] = 'Customer';
+    $_SESSION['unqid'] = $fetch['id'];
 }
 
 $res = [

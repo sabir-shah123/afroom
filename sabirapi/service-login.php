@@ -24,11 +24,13 @@ if ($fetch) {
     $data['id'] = $fetch['id'];
     $_SESSION['mobile'] = $_POST['mobile'];
     $_SESSION['logintype'] = 'Provider';
+    $_SESSION['unqid'] = $fetch['id'];
 } else {
     $insert = mysqli_query($conn, "INSERT into providers (mobile) Values('" . $_POST['mobile'] . "')");
     $data['id'] = mysqli_insert_id($conn);
     $_SESSION['mobile'] = $_POST['mobile'];
     $_SESSION['logintype'] = 'Provider';
+    $_SESSION['unqid'] = mysqli_insert_id($conn);
 }
 
 $data['mobile'] = $_POST['mobile'];

@@ -1,7 +1,6 @@
 <?php
 
 include '../api/db.php';
-
 header('Content-Type: application/json');
 
 // username,gender,country,city,refferalcode,regas are required
@@ -31,7 +30,7 @@ if (!isset($_POST['regas'])) {
     $missingVariables[] = 'regas';
 }
 
-if (!isset($_POST['mobile']) ) {
+if (!isset($_POST['mobile'])) {
     $missingVariables[] = 'mobile';
 }
 
