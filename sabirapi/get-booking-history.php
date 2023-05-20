@@ -2,19 +2,11 @@
 
 include '../api/db.php';
 include 'helper.php';
-
+include 'auth.php';
 header('Content-Type: application/json');
-$log_check = checkLogin();
-if (!$log_check) {
-    http_response_code(401);
-    echo json_encode([
-        'message' => 'Unauthorized',
-    ]);
-    exit();
-}
+
 
 $array = array();
-
 if ($_SESSION['logintype'] == 'Customer') {
     $query = mysqli_query($conn, "SELECT b.id, b.date, b.type, c.paymentstatus, (b.seat * (SELECT amt FROM bookamt)) AS amount, a.personname, c.paymode, b.custstatus, b.desti, b.time, o.paymode AS pay, b.booktype
         FROM booking AS b

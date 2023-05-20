@@ -1,7 +1,10 @@
 <?php
 
 include '../api/db.php';
+include 'helper.php';
 header('Content-Type: application/json');
+
+$token = generateToken(50);
 
 //mobile is required and must be 10 digit
 if (!isset($_POST['mobile']) || strlen($_POST['mobile']) != 10) {
@@ -28,13 +31,12 @@ if (!$fetch) {
     $_SESSION['unqid'] = $fetch['id'];
 }
 
+save_token($_SESSION['unqid'], $token, $conn);
+
 $res = [
     'status' => 1,
     'message' => 'Login Successful',
-    'data' => [
-        'mobile' => $_POST['mobile'],
-        'logintype' => 'Customer',
-    ],
+    'token' => base64_encode($token),
 ];
 
 echo json_encode($res);

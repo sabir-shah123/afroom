@@ -1,5 +1,6 @@
 <?php
 include '../api/db.php';
+include 'helper.php';
 header('Content-Type: application/json');
 
 //mobile is required and must be 10 digit
@@ -14,6 +15,7 @@ if (!isset($_POST['mobile']) || strlen($_POST['mobile']) != 10) {
     exit();
 }
 
+$token = generateToken(50);
 $data = [];
 
 $check = mysqli_query($conn, "Select * from providers where mobile='" . $_POST['mobile'] . "'");
@@ -36,10 +38,12 @@ if ($fetch) {
 $data['mobile'] = $_POST['mobile'];
 $data['logintype'] = 'Provider';
 
+save_token($_SESSION['unqid'], $token, $conn);
+
 $res = [
     'status' => 1,
     'message' => 'Login Successful',
-    'data' => $data,
+    'token' => base64_encode($token),
 ];
 
 echo json_encode($res);

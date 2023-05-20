@@ -1,17 +1,10 @@
 <?php
 include '../api/db.php';
 include 'helper.php';
+include 'auth.php';
+
 
 header('Content-Type: application/json');
-
-$log_check = checkLogin();
-if (!$log_check) {
-    http_response_code(401);
-    echo json_encode([
-        'message' => 'Unauthorized',
-    ]);
-    exit();
-}
 
 $array = array();
 if ($_SESSION['logintype'] == 'Customer') {

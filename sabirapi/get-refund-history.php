@@ -3,14 +3,7 @@
 include '../api/db.php';
 header('Content-Type: application/json');
 include 'helper.php';
-$log_check = checkLogin();
-if (!$log_check) {
-    http_response_code(401);
-    echo json_encode([
-        'message' => 'Unauthorized',
-    ]);
-    exit();
-}
+include 'auth.php';
 
 
 $array = array();

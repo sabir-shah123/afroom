@@ -49,6 +49,8 @@ if (!empty($missingVariables)) {
 $update = mysqli_query($conn, "UPDATE providers set name='" . $_POST['username'] . "',gender='" . $_POST['gender'] . "',country='" . $_POST['country'] . "',city='" . $_POST['city'] . "',refferalcode='" . $_POST['code'] . "',wallet='1000',
 regas='" . $_POST['regas'] . "' where mobile='" . $_POST['mobile'] . "'");
 
+$_SESSION['regas'] = $_POST['regas'];
+
 if ($update) {
     $res = [
         'status' => 1,

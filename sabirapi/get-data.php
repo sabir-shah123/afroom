@@ -2,15 +2,7 @@
 include '../api/db.php';
 header('Content-Type: application/json');
 include 'helper.php';
-$log_check = checkLogin();
-if (!$log_check) {
-    http_response_code(401);
-    echo json_encode([
-        'message' => 'Unauthorized',
-    ]);
-    exit();
-}
-
+include 'auth.php';
 
 $array = array();
 if ($_SESSION['logintype'] == 'Customer') {
@@ -20,9 +12,11 @@ if ($_SESSION['logintype'] == 'Customer') {
 }
 if ($_SESSION['logintype'] == 'Provider') {
     $session1 = "";
+    $_SESSION['regas'] = 'Provider';
 } else {
     $session1 = "";
 }
+
 if ($_SESSION['logintype'] == 'Customer') {
     $booking = mysqli_query($conn, "Select c.*,a.personname,a.mobile from booking as c
 left join customer as a on a.id=c.custid inner join custpayment as p on p.custid=c.id
@@ -30,7 +24,7 @@ where p.paymentstatus=1 and date='" . date("Y-m-d") . "' " . $session . " and c.
 } else {
     $booking = mysqli_query($conn, "Select c.*,a.personname,a.mobile from booking as c
 left join customer as a on a.id=c.custid inner join custpayment as p on p.custid=c.id
-where p.paymentstatus=1 and date='" . date("Y-m-d") . "' " . $session . " and c.custstatus=0  and c.booktype='" . $_SESSION['regas'] . "' order by c.id desc");
+where p.paymentstatus=1 and date='" . date("Y-m-d") . "' " . $session . " and c.custstatus=0  and c.booktype='" . $_SESSION['regas']. "' order by c.id desc");
 }
 
 while ($result = mysqli_fetch_assoc($booking)) {
@@ -54,11 +48,9 @@ while ($result = mysqli_fetch_assoc($booking)) {
 }
 
 $res = [
-	'status' => 1,
-	'message' => 'Data',
-	'data' => $array,
+    'status' => 1,
+    'message' => 'Data',
+    'data' => $array,
 ];
 
 echo json_encode($res);
-
-
