@@ -46,7 +46,7 @@ include('header.php');
                                       	<tr ng-repeat="x in BookHis">
 											<td>{{$index+1}}</td>
 											<td>{{x.id}}</td>
-											<td>{{x.type}}</td>
+											<td>{{x.btype}}</td>
 											<td>{{x.desti}}</td>
 											<td>{{x.date}}</td>
 											<td>{{x.time}}</td>

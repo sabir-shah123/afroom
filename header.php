@@ -393,9 +393,9 @@ body{
 </style>
 <?php
 if($_SESSION['logintype']!='Customer') { 
-$cou21 = mysqli_query($conn,"SELECT  count(id) as id from noti where status=0 and pro='".$_SESSION['unqid']."' and type='PROVIDER' and numb=0");
+$cou21 = mysqli_query($conn,"SELECT  count(id) as id from noti where status=0 and pro='".$_SESSION['unqid']."' and type='PROVIDER' and numb=0 and cast(created_at as date)='".date('Y-m-d')."'");
 }else{
-$cou21 = mysqli_query($conn,"SELECT count(id) as id from noti where status=0 and cust='".$_SESSION['unqid']."' and type='CUSTOMER' and numb=0");	
+$cou21 = mysqli_query($conn,"SELECT count(id) as id from noti where status=0 and cust='".$_SESSION['unqid']."' and type='CUSTOMER' and numb=0 and cast(created_at as date)='".date('Y-m-d')."'");	
 
 }
 $notis = mysqli_fetch_assoc($cou21);

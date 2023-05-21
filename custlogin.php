@@ -23,6 +23,9 @@
 		font-family:'Conv_Comfortaa-VariableFont_wght',Sans-Serif!important;
 	}
 	
+
+     
+	
 	    #myVideo {
   position: fixed;
   right: 0;
@@ -116,7 +119,7 @@ function sendotp(){
            type: 'post',
            data: 'mobile='+mobile,
            success:function(result){
-				// alert(JSON.stringify(result));
+				//alert(JSON.stringify(result));
 					if(result=='1'){
 							swal({text: "Login Successfully!",type:"success",showCancelButton:false,confirmButtonClass: "btn-success",
   			closeOnConfirm: false});

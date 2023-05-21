@@ -15,11 +15,12 @@ if($_SESSION['logintype']=='Provider'){
 if($_SESSION['logintype']=='Customer'){
 $booking = mysqli_query($conn,"Select c.*,a.personname,a.mobile from booking as c 
 left join customer as a on a.id=c.custid inner join custpayment as p on p.custid=c.id 
-where p.paymentstatus=1 and date='".date("Y-m-d")."' ".$session." and c.custstatus=0   order by c.id desc");
+where p.paymentstatus=1 and cast(c.created_at as date)='".date("Y-m-d")."' ".$session." and c.custstatus=0   order by c.id desc");
 }else{
-$booking = mysqli_query($conn,"Select c.*,a.personname,a.mobile from booking as c 
-left join customer as a on a.id=c.custid inner join custpayment as p on p.custid=c.id 
-where p.paymentstatus=1 and date='".date("Y-m-d")."' ".$session." and c.custstatus=0  and c.booktype='".$_SESSION['regas']."' order by c.id desc");
+
+	$booking = mysqli_query($conn,"Select c.*,a.personname,a.mobile from booking as c 
+	left join customer as a on a.id=c.custid inner join custpayment as p on p.custid=c.id 
+	where p.paymentstatus=1 and cast(c.created_at as date)='".date("Y-m-d")."' ".$session1." and c.custstatus=0  and c.booktype='".$_SESSION['regas']."' order by c.id desc");
 }
 
 

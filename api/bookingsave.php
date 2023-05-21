@@ -45,6 +45,7 @@ if($booking){
 	        mysqli_query($conn,"INSERT into custpayment Values(0,'".$_POST['orderid']."','".$lfetch['id']."','".$pay."','0','ONLINE',now())");		
 	}
 	$lastcust_id =mysqli_insert_id($conn);
+	
 	echo json_encode(['pay'=>$pay,'last_cust_id'=>$lastcust_id,'lastbooking_id'=>$lastbooking_id]);
 }else{
 	echo "error";

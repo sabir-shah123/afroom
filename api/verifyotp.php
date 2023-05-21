@@ -23,7 +23,7 @@ if ($err) {
   			echo "0";
   }else{
 	  		$_SESSION['mobile'] = $_POST['mobile'];
-			  $_SESSION['logintype']='Provider';
+			$_SESSION['logintype']='Provider';
   			$check = mysqli_query($conn,"Select count(id) as id from providers where mobile='".$_POST['mobile']."' and gender!='' and country!=''");
   			$fetch = mysqli_fetch_assoc($check);
   			if($fetch['id']>0){
