@@ -27,6 +27,7 @@ if ($fetch) {
     $_SESSION['mobile'] = $_POST['mobile'];
     $_SESSION['logintype'] = 'Provider';
     $_SESSION['unqid'] = $fetch['id'];
+    $_SESSION['regas'] = $fetch['regas'];
 } else {
     $insert = mysqli_query($conn, "INSERT into providers (mobile) Values('" . $_POST['mobile'] . "')");
     $data['id'] = mysqli_insert_id($conn);
